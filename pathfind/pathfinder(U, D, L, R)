@@ -82,7 +82,6 @@ def findEnd(map, moves):
     
     i = start
     j = 0
-    pos = set()
     for move in moves:
         if move == "L":
             i -= 1
