@@ -74,6 +74,10 @@ class Spot:
 	def draw(self, win):
 		pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.width))
 
+	def getXY(self):
+		return (self.x, self.y)
+
+
 	def update_neighbors(self, grid):
 		self.neighbors = []
 		if self.row < self.total_rows - 1 and not grid[self.row + 1][self.col].is_barrier(): # DOWN
@@ -102,7 +106,7 @@ def reconstruct_path(came_from, current, draw):
 	while current in came_from:
 		current = came_from[current]
 		current.make_path()
-		print(current)
+		print(current.getXY())
 		draw()
 
 
@@ -248,3 +252,4 @@ def main(win, width, height):
 	pygame.quit()
 
 main(WIN, WIDTH, HEIGHT)
+
