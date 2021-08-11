@@ -2,8 +2,11 @@ import pygame
 import math
 from queue import PriorityQueue
 
-WIDTH = 500
-WIN = pygame.display.set_mode((WIDTH, WIDTH))
+
+# 23*11
+WIDTH = 460
+HEIGHT = 220
+WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("A* Path Finding Algorithm")
 
 RED = (255, 0, 0)
@@ -67,6 +70,7 @@ class Spot:
 	def make_path(self):
 		self.color = PURPLE
 
+
 	def draw(self, win):
 		pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.width))
 
@@ -98,6 +102,7 @@ def reconstruct_path(came_from, current, draw):
 	while current in came_from:
 		current = came_from[current]
 		current.make_path()
+		print(current)
 		draw()
 
 
@@ -161,7 +166,7 @@ def make_grid(rows, width):
 
 def draw_grid(win, rows, width):
 	gap = width // rows
-	for i in range(rows):
+	for i in range(11):
 		pygame.draw.line(win, GREY, (0, i * gap), (width, i * gap))
 		for j in range(rows):
 			pygame.draw.line(win, GREY, (j * gap, 0), (j * gap, width))
@@ -188,8 +193,8 @@ def get_clicked_pos(pos, rows, width):
 	return row, col
 
 
-def main(win, width):
-	ROWS = 25
+def main(win, width, height):
+	ROWS = 23
 	grid = make_grid(ROWS, width)
 
 	start = None
@@ -242,4 +247,4 @@ def main(win, width):
 
 	pygame.quit()
 
-main(WIN, WIDTH)
+main(WIN, WIDTH, HEIGHT)
