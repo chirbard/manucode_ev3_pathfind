@@ -9,8 +9,8 @@ from pybricks.robotics import DriveBase
 from pybricks.media.ev3dev import SoundFile, ImageFile
 
 ev3 = EV3Brick()
-left_motor = Motor(Port.C)
-right_motor = Motor(Port.D)
+left_motor = Motor(Port.D)
+right_motor = Motor(Port.C)
 wheel_diameter = 56
 axle_track = 105
 robot = DriveBase(left_motor, right_motor, wheel_diameter, axle_track)
@@ -46,21 +46,21 @@ class changeDirection():
     def toWest(currentDirection):
         switch = {
             'e': 180,
-            'n': 90,
-            's': -90
+            'n': -90,
+            's': 90
         } 
         return switch.get(currentDirection, 'invalid direction')
     def toSouth(currentDirection):
         switch = {
-            'w': 90,
+            'w': -90,
             'n': 180,
-            'e': -90
+            'e': 90
         } 
         return switch.get(currentDirection, 'invalid direction')
     def toNorth(currentDirection):
         switch = {
-            'w': -90,
-            'e': 90,
+            'w': 90,
+            'e': -90,
             's': 180
         } 
         return switch.get(currentDirection, 'invalid direction')
